@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang = "en">
+   
+   <head>
+      <meta charset = "utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+      <meta name = "viewport" content = "width = device-width, 
+         initial-scale = 1">
+      
+      <title>Countdown Timer</title>
+     <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Grand+Hotel|Indie+Flower" rel="stylesheet">
+
+<script>
+var seconds,minutes,hours,days;
+function getTime_R(endtime) {
+  var t = Date.parse(endtime) - Date.parse(new Date());
+   seconds = Math.floor((t / 1000) % 60);
+   minutes = Math.floor((t / 1000 / 60) % 60);
+   hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+   days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds
+  };
+}
+
+function initialize(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+function updateTime() {
+  var t = getTime_R(endtime);
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+  updateTime();
+  var timeinterval = setInterval(updateTime, 1000);
+}
+
+window.onload = function () {
+  var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
+  initialize('countdown_main', deadline);
+};
+</script>
+
+</head>
+
+<body>
+
+ <div class="container-fluid"><!--container fluid starts-->
+
+<!--Background Image Coding starts-->
+      <ul id="scene" data-friction-x="0.03" data-friction-y="0.05">
+          <li class="layer" id="specks" data-depth="0.1"></li>
+          <li class="layer" id="layer-1" data-depth="0.15"><div class="img" id="img-1"></div></li>
+          <li class="layer" id="layer-2" data-depth="0.25"><div class="img" id="img-2"></div></li>
+          <li class="layer" id="layer-3" data-depth="0.45"><div class="img" id="img-3"></div></li>
+      </ul>
+<!--Background Image Coding ends-->
+
+    <div class="container-wrap"><!--container wrap starts-->
+        <div class="container-wrap-cell">
+            <div class="container">
+                <div id="content"><!--content starts-->
+
+                      <div class="timer-wrapper"><!--timer wrapper starts-->
+                            <div class="logo-wrapper clearfix"> 
+                            <div class="logo clearfix"><a href="#">Comming Soon</a></div>
+                        </div>
+                
+                        <h1>Hi, We will be back soon.</h1>
+                        <h3>Something big is coming , please come back soon.</h3>
+
+                      <div id="countdown_main"><!--countdown main wrapper starts-->
+                          <div>
+                              <span class="days"></span>
+                              <div class="smalltext">Days</div>
+                          </div>
+
+                          <div>
+                              <span class="hours"></span>
+                              <div class="smalltext">Hours</div>
+                          </div>
+
+                          <div>
+                              <span class="minutes"></span>
+                              <div class="smalltext">Minutes</div>
+                          </div>
+
+                        <div>
+                          <span class="seconds"></span>
+                          <div class="smalltext">Seconds</div>
+                        </div>
+
+                      </div><!--countdown main wrapper ends-->
+
+                    </div><!--timer wrapper ends-->
+
+  </div><!--id content ends-->
+  </div><!--container div ends-->
+</div><!--container wrapper cell ends-->
+</div><!--container wrap ends-->
+
+</div><!--container fluid ends-->
+</body>
+</html>
