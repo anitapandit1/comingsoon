@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang = "en">
+      <head>
+      <meta charset = "utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+      <meta name = "viewport" content = "width = device-width, 
+         initial-scale = 1">
+      
+      <title>Countdown Timer</title>
+     <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Grand+Hotel|Indie+Flower" rel="stylesheet">
+<script>
+function getTime_R(e){var n=Date.parse(e)-Date.parse(new Date);return seconds=Math.floor(n/1e3%60),minutes=Math.floor(n/1e3/60%60),hours=Math.floor(n/36e5%24),days=Math.floor(n/864e5),{total:n,days:days,hours:hours,minutes:minutes,seconds:seconds}}function initialize(e,n){function t(){var e=getTime_R(n);o.innerHTML=e.days,r.innerHTML=("0"+e.hours).slice(-2),a.innerHTML=("0"+e.minutes).slice(-2),i.innerHTML=("0"+e.seconds).slice(-2),e.total<=0&&clearInterval(u)}var s=document.getElementById(e),o=s.querySelector(".days"),r=s.querySelector(".hours"),a=s.querySelector(".minutes"),i=s.querySelector(".seconds");t();var u=setInterval(t,1e3)}var seconds,minutes,hours,days;window.onload=function(){var e=new Date(Date.parse(new Date)+1296e6);initialize("countdown_main",e)};
+</script>
+</head>
+<body>
+ <div class="container-fluid"><!--container fluid starts-->
+<!--Background Image Coding starts-->
+      <ul id="scene" data-friction-x="0.03" data-friction-y="0.05">
+          <li class="layer" id="specks" data-depth="0.1"></li>
+          <li class="layer" id="layer-1" data-depth="0.15"><div class="img" id="img-1"></div></li>
+          <li class="layer" id="layer-2" data-depth="0.25"><div class="img" id="img-2"></div></li>
+          <li class="layer" id="layer-3" data-depth="0.45"><div class="img" id="img-3"></div></li>
+      </ul>
+<!--Background Image Coding ends-->
+    <div class="container-wrap"><!--container wrap starts-->
+        <div class="container-wrap-cell">
+            <div class="container">
+                <div id="content"><!--content starts-->
+                      <div class="timer-wrapper"><!--timer wrapper starts-->
+                            <div class="logo-wrapper clearfix"> 
+                            <div class="logo clearfix"><a href="#">Comming Soon</a></div>
+                        </div>
+                        <h1>Hi, We will be back soon.</h1>
+                        <h3>Something big is coming , please come back soon.</h3>
+                      <div id="countdown_main"><!--countdown main wrapper starts-->
+                          <div>
+                              <span class="days"></span>
+                              <div class="smalltext">Days</div>
+                          </div>
+                          <div>
+                              <span class="hours"></span>
+                              <div class="smalltext">Hours</div>
+                          </div>
+                          <div>
+                              <span class="minutes"></span>
+                              <div class="smalltext">Minutes</div>
+                          </div>
+                        <div>
+                          <span class="seconds"></span>
+                          <div class="smalltext">Seconds</div>
+                        </div>
+                      </div><!--countdown main wrapper ends-->
+                    </div><!--timer wrapper ends-->
+  </div><!--id content ends-->
+  </div><!--container div ends-->
+</div><!--container wrapper cell ends-->
+</div><!--container wrap ends-->
+</div><!--container fluid ends-->
+</body>
+</html>
